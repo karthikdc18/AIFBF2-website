@@ -135,7 +135,7 @@ export default function Sectors() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title={<span className="text-orange-400 text-5xl font-bold">Our Objectives</span>}
-          subtitle="AIFBF supports various sectors that significantly contribute to India's GDP"
+          subtitle="The objectives of AIFBF are to promote economic growth, enhance financial systems, and equip stakeholders with the necessary skills to drive sustainable development and contribute to India's GDP."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
