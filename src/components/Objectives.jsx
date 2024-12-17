@@ -82,7 +82,7 @@ const sectors = [
   },
 ];
 
-const initiatives = [
+const initiativesContent = [
   {
     title: "Member Services",
     description: "Legal, financial, and corporate advisory services."
@@ -97,14 +97,14 @@ const initiatives = [
   },
   {
     title: "Transformative Education Loan Reform",
-    description: "A strategic initiative to overhaul India’s education loan framework, focusing on affordability, accessibility, and inclusivity. This reform seeks to cap interest rates, extend repayment periods, and eliminate collateral requirements, fostering a more educated and skilled workforce."
+    description: "A strategic initiative to overhaul India’s education loan framework, focusing on affordability, accessibility, and inclusivity."
   },
 ];
 
 export default function Sectors() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSector, setSelectedSector] = useState(null);
-  const [isInitiativeModalOpen, setIsInitiativeModalOpen] = useState(false);
+  const [isInitiativesModalOpen, setIsInitiativesModalOpen] = useState(false);
 
   const handleOpenModal = (sector) => {
     setSelectedSector(sector);
@@ -122,12 +122,12 @@ export default function Sectors() {
     }
   };
 
-  const handleOpenInitiativeModal = () => {
-    setIsInitiativeModalOpen(true);
+  const handleOpenInitiativesModal = () => {
+    setIsInitiativesModalOpen(true);
   };
 
-  const handleCloseInitiativeModal = () => {
-    setIsInitiativeModalOpen(false);
+  const handleCloseInitiativesModal = () => {
+    setIsInitiativesModalOpen(false);
   };
 
   return (
@@ -146,7 +146,6 @@ export default function Sectors() {
                   {sector.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{sector.title}</h3>
-
                 <button
                   onClick={() => handleOpenModal(sector)}
                   className="absolute bottom-4 right-4 px-4 py-2 bg-transparent text-primary border border-primary rounded-lg hover:text-orange-500 hover:bg-transparent transition-all duration-300"
@@ -158,36 +157,70 @@ export default function Sectors() {
           ))}
         </div>
 
-        {/* Learn More about Initiatives Button */}
-        <div className="mt-10 text-center">
+        {/* Our Initiatives Button */}
+        <div className="mt-8 text-center">
           <button
-            onClick={handleOpenInitiativeModal}
-            className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300"
+            onClick={handleOpenInitiativesModal}
+            className="px-6 py-3 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-all duration-300"
           >
-            Learn More About Our Initiatives
+            Our Initiatives
           </button>
         </div>
+
       </div>
 
-      {/* Modal for displaying detailed information about Initiatives */}
-      {isInitiativeModalOpen && (
+      {/* Modal for displaying detailed information about the sector */}
+      {isModalOpen && selectedSector && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 modal-overlay"
           onClick={handleOverlayClick}
         >
           <div className="bg-white p-8 rounded-lg max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-2xl font-semibold mb-4">Our Initiatives</h2>
-            <div className="grid grid-cols-1 gap-6">
-              {initiatives.map((initiative, index) => (
-                <div key={index} className="p-4 bg-gray-100 rounded-lg">
-                  <h3 className="text-xl font-semibold text-orange-400 mb-2">{initiative.title}</h3>
-                  <p className="text-gray-700">{initiative.description}</p>
+            <h2 className="text-2xl font-semibold mb-4">{selectedSector.title}</h2>
+            <div className="text-gray-600 mb-4">{selectedSector.description}</div>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              {selectedSector.images.map((image, index) => (
+                <div key={index} className="w-full h-auto flex justify-center items-center">
+                  <img
+                    src={image}
+                    alt={`Sector Image ${index + 1}`}
+                    className="w-full h-full object-contain rounded-lg"
+                  />
                 </div>
               ))}
             </div>
             <button
-              onClick={handleCloseInitiativeModal}
-              className="mt-6 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all duration-300"
+              onClick={handleCloseModal}
+              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal for Our Initiatives */}
+      {isInitiativesModalOpen && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 modal-overlay"
+          onClick={handleOverlayClick}
+        >
+          <div className="bg-white p-8 rounded-lg max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
+            <h2 className="text-2xl font-semibold text-orange-400 mb-4">Our Initiatives</h2>
+
+            {/* Initiatives Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {initiativesContent.map((initiative, index) => (
+                <div key={index} className="p-6 bg-white shadow-md rounded-lg hover:shadow-xl">
+                  <h3 className="text-xl font-semibold text-orange-400 mb-4">{initiative.title}</h3>
+                  <p>{initiative.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <button
+              onClick={handleCloseInitiativesModal}
+              className="mt-4 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-all"
             >
               Close
             </button>
