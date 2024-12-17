@@ -163,7 +163,7 @@ export default function Sectors() {
             onClick={handleOpenInitiativesModal}
             className="px-6 py-3 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-all duration-300"
           >
-            Our Initiatives
+            Learn More About Our Initiatives
           </button>
         </div>
 
