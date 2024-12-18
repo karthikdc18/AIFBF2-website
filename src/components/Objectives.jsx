@@ -175,7 +175,7 @@ export default function Sectors() {
           className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 modal-overlay"
           onClick={handleOverlayClick}
         >
-          <div className="bg-white p-8 rounded-lg max-w-lg w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white p-8 rounded-lg max-w-lg w-full overflow-auto max-h-[80vh]" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-2xl font-semibold mb-4">{selectedSector.title}</h2>
             <div className="text-gray-600 mb-4">{selectedSector.description}</div>
             <div className="grid grid-cols-2 gap-4 mb-4">
@@ -205,7 +205,7 @@ export default function Sectors() {
           className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 modal-overlay"
           onClick={handleOverlayClick}
         >
-          <div className="bg-white p-8 rounded-lg max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-white p-8 rounded-lg max-w-2xl w-full overflow-auto max-h-[80vh]" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-2xl font-semibold text-orange-400 mb-4">Our Initiatives</h2>
 
             {/* Initiatives Cards */}
